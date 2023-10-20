@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+    {% block body %}
+        <table class="table table-primary table-striped w-75 mx-auto mt-5">
+            <thead>
+                <tr class="table-primary">
+                    <th class="table-primary">Réstaurant</th>
+                    <th class="table-primary">Nourriture</th>
+                    <th class="table-primary">Description</th>
+                    <th class="table-primary">Quantité</th>
+                    <th class="table-primary">Photo</th>
+                    <th class="table-primary">Date et Heure de Récupération</th>
+                    <th class="table-primary">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in panier %}
+                    {% if item.product is not null %}
+                    <tr class="table-primary">
+                        <td class="table-primary">{{ item.product.restaurant.name }}</td>
+                        <td class="table-primary">{{ item.product.name }}</td>
+                        <td class="table-primary">{{ item.product.description }}</td>
+                        <td class="table-primary">{{ item.quantity }}</td>
+                        <td class="table-primary">
+                            <img width="100" src="{{ asset('upload/') ~ item.product.picture }}" alt="{{ item.product.name }}" title="{{ item.product.name }}">
+                        </td>
+                        <td class="table-primary">{{ item.product.pickupDateTime ? item.product.pickupDateTime|date('d/m/Y H:i') : 'N/A' }}</td>
+                        <td class="table-primary">
+                            <a href="{{ path('supprimer_from_panier', { 'id': item.product.id }) }}" onclick="return confirm('Etes-vous sûr de supprimer?'" class="btn btn-danger">Supprimer</a>
+                            <a href="{{ path('recuperer_to_donate', { 'id': item.product.id }) }}" class="btn btn-success">Récupérer</a>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr class="table-primary">
+                        <td colspan="7" class="table-info"><h3 class="text-center">Aucun élément dans le panier</h3></td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endblock %}
+    

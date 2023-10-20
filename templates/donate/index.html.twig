@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+    {% block body %}
+        
+        <table class="table table-dark table-striped table-secondary w-75 mx-auto mt-5" >
+            <thead>
+                <tr class="table-secondary" style="border: 1px solid">
+                    <th>Réstaurant</th>
+                    <th>nourriture</th>
+                    <th>Description</th>
+                    <th>Quantité</th>
+                    <th>Photo</th>
+                    <th>Date et Heure de Récupération</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for donate in donates %}
+                <tr class="table-secondary" style="border: 1px solid">
+                    <td>{{ donate.restaurant.name }}</td>
+                    <td>{{ donate.name }}</td>
+                    <td>{{ donate.description }}</td>
+                    <td>{{ donate.quantity }}</td>
+                    <td>
+                        <img width="100" src="{{ asset('upload/') }}{{ donate.picture }}" alt="{{ donate.name }}" title="{{ donate.name }}">
+                    </td>
+                    <td>{{ donate.pickupDateTime ? donate.pickupDateTime|date('d/m/Y H:i') : 'N/A' }}</td>
+                    <td>
+                        <a href="{{ path('update_donate', { 'id': donate.id }) }}" class="btn btn-info">Modifier</a>
+                        <a href="{{ path('delete_donate', { 'id': donate.id }) }}" onclick="return confirm('Etes-vous sûr?')" class="btn btn-danger">Supprimer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr class="table-secondary">
+                    <td colspan="7"><h3 class="text-center">Aucune donation enregistrée</h3></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endblock %}
+    

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+    {% block body %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 ">
+                <h1 class="text-center" >Merci pour vos dons ❤️ </h1>
+            </div>
+        </div>
+        <table class="table table-primary mt-4" style="border: 1px solid;">
+            <tr class="table-primary">
+                <th>Restaurant</th>
+                <th>Nom de la nourriture</th>
+                <th>Description</th>
+                <th>Photo</th>
+                <th>Quantité</th>
+            </tr>
+            {% for donate in donations %} 
+            <tr class="table-primary">
+                <td>{{ donate.restaurant ? donate.restaurant.name : 'N/A' }}</td>
+                <td>{{ donate.name }}</td>
+                <td>{{ donate.description }}</td>
+                <td><img src="{{ asset('upload/') ~ donate.picture }}" alt="{{ donate.name }}" style="max-width: 100px;"></td>
+                <td>{{ donate.quantity }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% if donations is empty %} 
+        <div class="col">
+            <h3 class="text-center">Aucune donation enregistrée</h3>
+        </div>
+        {% endif %}
+    </div>
+    {% endblock %}
+    

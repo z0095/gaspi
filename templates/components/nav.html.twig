@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-light  static-top" style="background-color: #bdc3c7;">
+  <div class="container">
+    <a class="navbar-brand" href="{{ path('app_front') }}">
+      <img src="{{ asset('assets/img/ag3.png') }}" alt="Icon" style="vertical-align: middle; margin-right: 10px; width:100px; height:100px;"> 
+      AntiGaspillage
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        {% if app.user %}
+          {% if 'ROLE_RESTAURANT' in app.user.roles %}
+            <li class="nav-item">
+              <a href="{{ path('create_donate') }}" class="nav-link" style="color: black;">Faire un don</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ path('app_my_donations') }}" class="nav-link" style="color: black;">Mes dons</a>
+            </li>
+          {% elseif 'ROLE_ASSOCIATION' in app.user.roles %}
+            <li class="nav-item">
+              <a href="{{ path('app_donations') }}" class="nav-link" style="color: black;">Dons</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ path('app_panier') }}" class="nav-link" style="color: black;">Panier</a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ path('app_my_account') }}" class="nav-link" style="color: black;">MonCompte</a>
+            </li>
+          {% endif %}
+        {% endif %}
+      </ul>
+      {% if app.user %}
+        <small>Bonjour, {{ app.user.name }}</small>
+        <a href="{{ path('app_logout') }}" style="text-decoration: none;">
+          <span style="margin-left: 10px;"><i class="bi bi-box-arrow-right" style="color: white;"></i></span>
+        </a>
+      {% else %}
+        <a href="{{ path('app_login') }}" type="button" style="color: black; text-decoration: none;">
+          <i class="bi bi-person" style="color: white;"></i> Connexion 
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</nav>

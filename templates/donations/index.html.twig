@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+    {% block body %}
+        <div class="container mt-5">
+            <div class="row justify-content-center mb-5">
+                <div class="col-md-8">
+                    <h1 class="text-center">Tous les dons</h1>
+                </div>
+            </div>
+            <div class="row">
+                {% for donate in donates %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card" style="width: 18rem;">
+                            <img src="{{ asset('upload/') ~ donate.picture }}" class="card-img-top" height="200" alt="{{ donate.name }}">
+                            <div class="card-body" style="min-height: 350px;">
+                                <h5 class="card-text">Restaurant: {{ donate.restaurant ? donate.restaurant.name : 'N/A' }}</h5>
+                                <h5 class="card-text">Nom de la nourriture: {{ donate.name }}</h5>
+                                <p class="card-text">Description: {{ donate.description }}</p>
+                                <p class="card-text">Quantité: {{ donate.quantity }}</p>
+                                <p class="card-text">Date et Heure de Récupération: {{ donate.pickupDateTime ? donate.pickupDateTime|date('d/m/Y H:i') : 'N/A' }}</p>
+                                {% if donate.quantity > 0 %}
+                                    <a href="{{ path('cart_add', {id: donate.id}) }}" class="btn btn-info">Ajouter</a>
+                                {% else %}
+                                    <p class="text-muted">Plus d'articles disponibles</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% if donates is empty %}
+                    <div class="col">
+                        <h3 class="text-center">Aucune donation enregistrée</h3>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endblock %}
+    

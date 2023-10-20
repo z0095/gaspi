@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+    {% block content %}
+        <div class="class mt-4">
+            <h1 class="text-center"> Voici toutes les dons que vous avez &#128077;</h1>
+        </div>
+        <table class="table table-success mt-5">
+            <thead class="table-success">
+                <tr class="table-success">
+                    <th class="table-success">Nourriture</th>
+                    <th class="table-success">Quantité totale</th>
+                    <th class="table-success">Image</th>
+                    <th class="table-success">Date de Récupération</th>
+                    <th class="table-success">Restaurant</th>
+                </tr>
+            </thead>
+            <tbody class="table-success">
+                {% for donationData in donations %}
+                    <tr class="table-success">
+                        <td class="table-success">{{ donationData.donate.getName() }}</td>
+                        <td class="table-success">{{ donationData.totalQuantity }}</td>
+                        <td class="table-success">
+                            {% if donationData.donate.getPicture() %}
+                                <img src="{{ asset('upload/' ~ donationData.donate.getPicture()) }}" alt="{{ donationData.donate.getName() }}" width="100" class="table-success">
+                            {% else %}
+                                Pas d'image
+                            {% endif %}
+                        </td>
+                        <td class="table-success">{{ donationData.donate.getPickupDateTime() ? donationData.donate.getPickupDateTime()|date('d/m/Y H:i') : 'Non Récupéré' }}</td>
+                        <td class="table-success">{{ donationData.donate.getRestaurant().getName() }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endblock %}
+    

@@ -1,0 +1,156 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body %}
+	{# 
+		    <header class="masthead">
+		        <div class="container position-relative">
+		            <div class="row justify-content-center">
+		                <div class="col-xl-6">
+		                    <div class="text-center text-white">
+		                        <!-- Page heading-->
+		                        <h1 class="mb-5">Augmentez vos chances d'agir contre le gaspillage avec notre plateforme professionnelle !</h1>
+		                        {% if app.user is null %}
+		                            <div class="col-auto">
+		                                <a class="btn btn-primary btn-lg" href="{{ path('app_register') }}">Inscrivez-vous</a>
+		                            </div>
+		                        {% endif %}
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </header> #}
+
+	{% if app.user %}
+		<style>
+			.article {
+				
+            font-family: 'Roboto Slab', serif;
+				color: #555;
+				text-align: center;
+				margin: 20px;
+				font-size: 16px;
+				line-height: 1.5;
+			}
+		</style>
+		<div id="carouselExample" class="carousel slide showcase">
+			<div class="carousel-inner ">
+				<div class="carousel-item active">
+					<img src="assets/img/sixth img.png" class="d-block w-100  " style="height: 700px;" alt="...">
+				</div>
+				<div class="carousel-item">
+					<img src="assets/img/7.png" class="d-block w-100 " style="height: 700px;" alt="...">
+				</div>
+				<div class="carousel-item">
+					<img src="assets/img/third.png" class="d-block w-100 " style="height: 700px;" alt="...">
+				</div>
+				<div class="carousel-item">
+					<img src="assets/img/10.png" class="d-block w-100 " style="height: 700px;" alt="...">
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+		<hr>
+		<div class="article">
+			<p>L'anti-gaspillage est bien plus qu'une simple tendance, c'est un mode de vie responsable. Il s'agit de la lutte contre le gaspillage des ressources, qu'elles soient alimentaires ou matérielles. En adoptant cette approche, nous pouvons contribuer à des changements positifs à différents niveaux.</p>
+
+			<p>En réduisant le gaspillage alimentaire, nous économisons de l'argent et contribuons à la préservation de l'environnement. Moins de déchets signifient moins de pollution et une planète plus propre. De plus, en faisant don d'aliments non consommés à des associations locales, nous soutenons nos communautés et renforçons les liens entre les habitants.</p>
+
+			<p>L'anti-gaspillage nous encourage également à adopter une alimentation plus saine en évitant de jeter des aliments encore utilisables. Cela nous incite à mieux planifier nos repas et à choisir des aliments de qualité.</p>
+
+			<p>Cette démarche va au-delà de la simple gestion des déchets. Elle contribue à la réduction des émissions de gaz à effet de serre, à l'économie d'énergie et à la promotion d'une économie circulaire.</p>
+
+			<p>En adoptant l'anti-gaspillage comme un mode de vie, nous participons à la création d'un monde plus durable, équilibré et respectueux de l'environnement. C'est une démarche qui profite à chacun de nous, à notre société et à la planète que nous partageons.</p>
+		</div>
+		<hr>
+	{% endif %}
+
+
+	{% if app.user is null %}
+
+		<header class="masthead">
+			<div class="container position-relative">
+				<div class="row justify-content-center">
+					<div class="col-xl-6">
+						<div
+							class="text-center text-white">
+							<!-- Page heading-->
+							<h1 class="mb-5">Augmentez vos chances d'agir contre le gaspillage avec notre plateforme professionnelle !</h1>
+							{% if app.user is null %}
+								<div class="col-auto">
+									<a class="btn btn-primary btn-lg" href="{{ path('app_register') }}">Inscrivez-vous</a>
+								</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- Image Showcases-->
+		<section class="showcase" style="margin-top: 10px;">
+			<div class="container-fluid p-0">
+				<div class="row g-0">
+					<div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/le-gaspillage-alimentaire (1).png')"></div>
+					<div class="col-lg-6 order-lg-1 my-auto showcase-text">
+						<h2>Réduire le Gaspillage Alimentaire à la Maison</h2>
+						<p class="lead mb-0">Le gaspillage alimentaire est un problème majeur dans nos foyers. Découvrez des astuces simples pour réduire le gaspillage alimentaire et économiser de l'argent.</p>
+					</div>
+				</div>
+				<div class="row g-0">
+					<div class="col-lg-6 text-white showcase-img" style="background-image: url('assets/img/2.jpg')"></div>
+					<div class="col-lg-6 my-auto showcase-text">
+						<h2>Consommer Responsable, Lutter contre le Gaspillage</h2>
+						<p class="lead mb-0">Adoptez une approche de consommation plus responsable pour minimiser le gaspillage de ressources naturelles et préserver notre planète.</p>
+					</div>
+				</div>
+				<div class="row g-0">
+					<div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/3.jpg')"></div>
+					<div class="col-lg-6 order-lg-1 my-auto showcase-text">
+						<h2>Donner une Seconde Vie aux Objets</h2>
+						<p class="lead mb-0">Apprenez comment le recyclage et la réutilisation des objets peuvent contribuer à la lutte contre le gaspillage et favoriser une économie circulaire.</p>
+					</div>
+				</div>
+			</div>
+			<hr>
+		</section>
+
+	{% endif %}
+
+
+	{# <!-- Image Showcases-->
+			    <section class="showcase" style="margin-top: 10px;">
+			        <div class="container-fluid p-0">
+			            <div class="row g-0">
+			                <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/le-gaspillage-alimentaire (1).png')"></div>
+			                <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+			                    <h2>Réduire le Gaspillage Alimentaire à la Maison</h2>
+			                    <p class="lead mb-0">Le gaspillage alimentaire est un problème majeur dans nos foyers. Découvrez des astuces simples pour réduire le gaspillage alimentaire et économiser de l'argent.</p>
+			                </div>
+			            </div>
+			            <div class="row g-0">
+			                <div class="col-lg-6 text-white showcase-img" style="background-image: url('assets/img/2.jpg')"></div>
+			                <div class="col-lg-6 my-auto showcase-text">
+			                    <h2>Consommer Responsable, Lutter contre le Gaspillage</h2>
+			                    <p class="lead mb-0">Adoptez une approche de consommation plus responsable pour minimiser le gaspillage de ressources naturelles et préserver notre planète.</p>
+			                </div>
+			            </div>
+			            <div class="row g-0">
+			                <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('assets/img/3.jpg')"></div>
+			                <div class="col-lg-6 order-lg-1 my-auto showcase-text">
+			                    <h2>Donner une Seconde Vie aux Objets</h2>
+			                    <p class="lead mb-0">Apprenez comment le recyclage et la réutilisation des objets peuvent contribuer à la lutte contre le gaspillage et favoriser une économie circulaire.</p>
+			                </div>
+			            </div>
+			        </div>
+			        <hr> #}
+
+{% endblock %}
